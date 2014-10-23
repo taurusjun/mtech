@@ -9,13 +9,13 @@ import com.mtech.annotationmeta.definition.MetaInfoObject;
 
 public class DefaultMetaInfoResponse implements IMetaInfoResponse {
 
-	Map<String, MetaInfoObject> metaInfoObjMap = new HashMap<String, MetaInfoObject>();
+	Map<String, Map<String, ?>> metaInfoObjMap = new HashMap<String, Map<String, ?>>();
 
 	public DefaultMetaInfoResponse() {
 
 	}
 
-	public void addMetaInfoObj(String name, MetaInfoObject infoObject) {
+	public void addMetaInfoObj(String name, Map<String, ?> infoObject) {
 		this.metaInfoObjMap.put(name, infoObject);
 	}
 

@@ -1,7 +1,10 @@
 package com.mtech.annotationmeta.test;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Set;
+
+import javassist.bytecode.SignatureAttribute.MethodSignature;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.FieldAnnotationsScanner;
@@ -34,13 +37,19 @@ public class MainTest {
 		Set<Field> ids = reflections
 				.getFieldsAnnotatedWith(MetaInfoAnnotation.class);
 
-		for (Field field : ids) {
-			MetaInfoAnnotation anno = field
-					.getAnnotation(MetaInfoAnnotation.class);
-			System.out.println(field.getDeclaringClass().getSimpleName() + ":"
-					+ field.getName() + ":" + anno.label());
-		}
+//		for (Field field : ids) {
+//			MetaInfoAnnotation anno = field
+//					.getAnnotation(MetaInfoAnnotation.class);
+//			System.out.println(field.getDeclaringClass().getSimpleName() + ":"
+//					+ field.getName() + ":" + anno.label());
+//		}
 
+		Class<MetaInfoAnnotation> metaDef=MetaInfoAnnotation.class;
+		Method[] methods= metaDef.getMethods();
+		for (Method method : methods) {
+			System.out.println(method.getName()+":"+method.getReturnType().getSimpleName());
+		}
+		
 		Set<Class<? extends Object>> subTypes = reflections
 				.getSubTypesOf(Object.class);
 
